@@ -1,0 +1,12 @@
+{
+    "ID": "E358BEC44E274256B1D25227D468C23C",
+    "ActionKeyword": "pwd",
+    "Name": "Password Generator",
+    "Description": "Random Password Generator",
+    "Author": "Tasen",
+    "Version": "1.0",
+    "Language": "csharp",
+    "Website": "http://tasenwen.appspot.com/",
+    "IcoPath": "Images\\app.png",
+    "ExecuteFileName": "Wox.Plugin.PasswordGenerator.dll"
+}
