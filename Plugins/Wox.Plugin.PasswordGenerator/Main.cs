@@ -32,7 +32,7 @@ namespace Wox.Plugin.PasswordGenerator
             {
                 new Result(){
                     Title = "Password Generator | 帮助：",
-                    SubTitle = "pwd n w s 16 l u >>> n 数字；w 字母；s 特殊字符； 16 生成的密码长度；l 小写；u 大写",
+                    SubTitle = "pwd nws16lug >>> n 数字；w 字母；s 特殊字符；g 生成GUID； 16 生成的密码长度；l 小写；u 大写",
                     IcoPath = "Images\\app.png"
                 }
             };
@@ -55,7 +55,7 @@ namespace Wox.Plugin.PasswordGenerator
                 results.Add(result);
             }
 
-            
+
             return results;
         }
 
@@ -78,18 +78,25 @@ namespace Wox.Plugin.PasswordGenerator
             }
             char[] cs = s.ToCharArray();
             string result = "";
-            for (int i = 0; i < length; i++)
+            if (types.IndexOf('g') >= 0)
             {
-                byte[] buffer = Guid.NewGuid().ToByteArray();
-                int iSeed = BitConverter.ToInt32(buffer, 0);
-                Random rd = new Random(iSeed);
-                result += cs[rd.Next(cs.Length)].ToString();
+                result = Guid.NewGuid().ToString();
             }
-            if(types.IndexOf('l') >= 0)
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    byte[] buffer = Guid.NewGuid().ToByteArray();
+                    int iSeed = BitConverter.ToInt32(buffer, 0);
+                    Random rd = new Random(iSeed);
+                    result += cs[rd.Next(cs.Length)].ToString();
+                }
+            }
+            if (types.IndexOf('l') >= 0)
             {
                 result = result.ToLower();
             }
-            else if(types.IndexOf('u') >= 0)
+            else if (types.IndexOf('u') >= 0)
             {
                 result = result.ToUpper();
             }
