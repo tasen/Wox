@@ -36,10 +36,9 @@ namespace Wox.Plugin.PasswordGenerator
                     IcoPath = "Images\\app.png"
                 }
             };
-            string p = "";
             for (int i = 0; i < COUNT; i++)
             {
-                p = GenRandomPassword(length, query.Search);
+                string p = GenRandomPassword(length, query.Search);
                 Result result = new Result()
                 {
                     Title = (i + 1) + "、" + p,
